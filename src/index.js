@@ -1,15 +1,9 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
-import remark from 'remark';
-import slug from 'remark-slug';
-import content from './custom/content';
-
-var ast = remark()
-  .use(slug)
-  .run(remark().parse(content));
+import AppWrapper from './components/appWrapper';
 
 ReactDOM.render(
-  <App ast={ast} content={content} />,
-  document.getElementById('app'));
+    <AppWrapper />,
+    document.getElementById('app')
+);
