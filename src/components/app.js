@@ -15,15 +15,15 @@ let languageOptions = [
   { title: 'cURL',
     short: 'cURL',
     value: 'curl' },
-  { title: 'CLI',
-    short: 'cli',
-    value: 'cli' },
-  { title: 'Python',
-    short: 'Python',
-    value: 'python' },
+  { title: 'Node',
+    short: 'Node',
+    value: 'node' },
   { title: 'JavaScript',
     short: 'JS',
     value: 'javascript' },
+  { title: 'PHP',
+    short: 'PHP',
+    value: 'php' },
   { title: 'Java',
     short: 'Java',
     value: 'java' },
@@ -32,7 +32,13 @@ let languageOptions = [
     value: 'objc' },
   { title: 'Swift',
     short: 'Swift',
-    value: 'swift' }
+    value: 'swift' },
+  { title: 'Python',
+    short: 'Python',
+    value: 'python' },
+  { title: 'Ruby',
+    short: 'Ruby',
+    value: 'ruby' }
 ];
 
 let defaultLanguage = languageOptions[0];
