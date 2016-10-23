@@ -47,7 +47,7 @@ let debouncedReplaceState = debounce(hash => {
   window.history.replaceState('', '', hash);
 }, 100);
 
-var App = React.createClass({
+var Documentation = React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
     content: React.PropTypes.string.isRequired,
@@ -245,4 +245,4 @@ var App = React.createClass({
   }
 });
 
-module.exports = App;
+module.exports = Documentation;

@@ -1,8 +1,9 @@
 import React from 'react';
 import remark from 'remark';
 import slug from 'remark-slug';
-import App from './app';
-import $ from 'jquery';
+import Documentation from './documentation';
+import auth from './../services/auth';
+import webService from './../services/webservice';
 
 var AppWrapper = React.createClass({
     getInitialState: function() {
@@ -13,17 +14,27 @@ var AppWrapper = React.createClass({
     },
 
     componentDidMount: function() {
-        this.serverRequest = $.get('http://localhost:8000/source/Forme/markdown', function (result) {
-            let content = result.data;
-            let ast = remark()
-                    .use(slug)
-                    .run(remark().parse(content));
+        webService.doCall(
+            'GET',
+            '/source/' + this.props.params.project + '/markdown',
+            {},
+            {
+                Authorization: auth.getToken()
+            },
+            (err, response) => {
+                if(!err) {
+                    let content = response;
+                    let ast = remark()
+                        .use(slug)
+                        .run(remark().parse(content));
 
-            this.setState({
-                content: content,
-                ast: ast
-            });
-        }.bind(this));
+                    this.setState({
+                        content: content,
+                        ast: ast
+                    });
+                }
+            }
+        )
     },
 
     componentWillUnmount: function() {
@@ -33,7 +44,7 @@ var AppWrapper = React.createClass({
     render: function() {
         if(this.state.ast && this.state.content) {
             return (
-                <App ast={this.state.ast} content={this.state.content}/>
+                <Documentation ast={this.state.ast} content={this.state.content}/>
             )
         } else {
             return <div></div>
