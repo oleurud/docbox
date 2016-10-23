@@ -1,7 +1,6 @@
 Frontend of the project [postmanDocs](https://github.com/oleurud/postmanDocs)
 
-**Is 99.9% based in [Mapbox](https://github.com/mapbox/docbox)**. I only added a React class to get the content from a HTTP call
-
+**Is 99.9% based in [Mapbox Docbox](https://github.com/mapbox/docbox)**.
 
 ### Requirements
 
