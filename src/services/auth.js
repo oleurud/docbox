@@ -25,7 +25,8 @@ module.exports = {
             '/auth/login',
             {
                 email: email,
-                password: pass
+                password: pass,
+                device: 'web'
             },
             {},
             handleResponse
