@@ -60,7 +60,7 @@ const Dashboard = React.createClass({
     componentWillMount() {
         webService.doCall(
             'GET',
-            '/source',
+            '/sources',
             {},
             {
                 Authorization: auth.getToken()

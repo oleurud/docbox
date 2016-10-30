@@ -16,7 +16,7 @@ var AppWrapper = React.createClass({
     componentDidMount: function() {
         webService.doCall(
             'GET',
-            '/source/' + this.props.params.project + '/markdown',
+            '/sources/' + this.props.params.project + '/markdown',
             {},
             {
                 Authorization: auth.getToken()
