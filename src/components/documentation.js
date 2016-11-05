@@ -51,7 +51,8 @@ var Documentation = React.createClass({
   mixins: [PureRenderMixin],
   propTypes: {
     content: React.PropTypes.string.isRequired,
-    ast: React.PropTypes.object.isRequired
+    ast: React.PropTypes.object.isRequired,
+    project: React.PropTypes.string.isRequired
   },
   getInitialState() {
     var active = 'Introduction';
@@ -187,7 +188,7 @@ var Documentation = React.createClass({
       <div className={`${queryMatches.desktop && 'space-left16'}`}>
         <div className={col1 ? 'col8 margin1' : ''}>
           <Content
-            leftClassname={col1 ? 'space-bottom4 pad2x prose clip' : 'space-bottom8 col6 pad2x prose clip'}
+            leftClassname={col1 ? 'space-bottom4 pad2x prose clip' : 'space-bottom4 col6 pad2x prose clip marginTop20'}
             rightClassname={col1 ? 'space-bottom2 pad2 prose clip fill-light space-top5' : 'space-bottom4 col6 pad2 prose clip fill-light space-top5'}
             ast={ast}
             language={this.state.language}/>
@@ -221,10 +222,10 @@ var Documentation = React.createClass({
         <a href='/' className={`active space-top1 space-left1 pin-topleft icon round dark pad0 ${brandClasses}`}></a>
         <div className={`strong small pad0
           ${queryMatches.mobile ? 'space-left3' : ''}
-          ${queryMatches.tablet ? 'space-left2' : 'space-left4 line-height15' }`}>
-          {queryMatches.desktop ? brandNames.desktop :
-            queryMatches.mobile ? brandNames.mobile : brandNames.tablet}
+          ${queryMatches.tablet ? 'space-left2' : 'space-left4 line-height32' }`}>
+          {this.props.project} Docs
         </div>
+        
         {queryMatches.tablet && <div>
           <button
             onClick={this.toggleNav}

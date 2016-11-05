@@ -44,7 +44,7 @@ var AppWrapper = React.createClass({
     render: function() {
         if(this.state.ast && this.state.content) {
             return (
-                <Documentation ast={this.state.ast} content={this.state.content}/>
+                <Documentation ast={this.state.ast} content={this.state.content} project={this.props.params.project}/>
             )
         } else {
             return <div></div>

@@ -5,9 +5,9 @@
  * media queries.
  */
 module.exports.brandNames = {
-  desktop: 'Wobble API Documentation',
-  tablet: 'Wobble API Docs',
-  mobile: 'API Docs'
+  desktop: 'Postman Docs',
+  tablet: 'Postman Docs',
+  mobile: 'Postman Docs'
 };
 
 /**

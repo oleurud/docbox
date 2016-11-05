@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { browserHistory, Router, Route, Link, withRouter } from 'react-router';
+import { browserHistory, hashHistory, Router, Route, Link, withRouter } from 'react-router';
 import auth from './services/auth';
 import AppWrapper from './components/appWrapper';
 import webService from './services/webservice';
@@ -31,16 +31,14 @@ const App = React.createClass({
 
     render() {
         const homeView = this.state.loggedIn ? <Dashboard updateAuth={this.updateAuth} /> : <Login />
+        const logOutButton = this.state.loggedIn ?
+            <li><Link to="/" onClick={this.handleLogout}>Log out</Link></li> :
+            ''
 
         return (
             <div>
                 <ul id="auth-header">
-                    {this.state.loggedIn ? (
-                        <li><Link to="/" onClick={this.handleLogout}>Log out</Link></li>
-                    ) : (
-                        <li><Link to="/">Sign in</Link></li>
-                    )}
-                    <li><Link to="/about">About</Link></li>
+                    {logOutButton}
                 </ul>
                 <div className="auth-container">
                     { this.props.children || homeView }
@@ -132,19 +130,6 @@ const Login = withRouter(
     })
 )
 
-const NotFound = React.createClass({
-    render() {
-        return <h1>Not found</h1>
-    }
-})
-
-const About = React.createClass({
-    render() {
-        return <h1>About</h1>
-    }
-})
-
-
 function requireAuth(nextState, replace) {
     if (!auth.loggedIn()) {
         replace({
@@ -155,13 +140,10 @@ function requireAuth(nextState, replace) {
 }
 
 ReactDOM.render(
-    <Router history={ browserHistory }>
-        <Route path="/" component={App}>
-            <Route path="/about" component={About} />
-            <Route path="/register" component={About} />
-        </Route>
+    <Router history={ hashHistory }>
+        <Route path="/" component={App}></Route>
         <Route path="/project/:project" component={AppWrapper} onEnter={requireAuth} />
-        <Route path="*" component={NotFound} />
+        <Route path="*" component={App} />
     </Router>,
     document.getElementById('app')
 );

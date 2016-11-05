@@ -64,6 +64,7 @@ body pre {
 .space-top3 { margin-top: 30px;}
 .space-top5 { margin-top: 50px;}
 .line-height15 { line-height: 15px; }
+.line-height32 { line-height: 32px; }
 .pad00y { padding-top: 2px; padding-bottom: 2px; }
 .space-bottom00 { margin-bottom: 3px;}
 
@@ -125,3 +126,5 @@ body .prose blockquote {
   margin-left: 10px;
   vertical-align: middle;
 }
+
+.marginTop20 {margin-top:20px;}
