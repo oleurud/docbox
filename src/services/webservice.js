@@ -13,11 +13,11 @@ let webService = {
             if(response.status && response.data) {
                 callback(null, response.data);
             } else {
-                callback(true, response.data ? response.data : 'Something was wrong');
+                callback(true, response.error ? response.error : {message: 'Something was wrong'});
             }
         })
         .fail(function( response ) {
-            callback(true, response.data ? response.data : 'Something was wrong');
+            callback(true, response.error ? response.error : {message: 'Something was wrong'});
         });
     }
 };

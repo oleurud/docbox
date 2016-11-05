@@ -10,7 +10,7 @@ const App = React.createClass({
         this.handleLogout = () => {
             auth.logout();
             this.setState({
-                false
+                loggedIn: false
             })
         }
 
@@ -21,7 +21,7 @@ const App = React.createClass({
 
     updateAuth(loggedIn) {
         this.setState({
-            loggedIn
+            loggedIn: loggedIn
         })
     },
 
@@ -30,7 +30,7 @@ const App = React.createClass({
     },
 
     render() {
-        const homeView = this.state.loggedIn ? <Dashboard /> : <Login />
+        const homeView = this.state.loggedIn ? <Dashboard updateAuth={this.updateAuth} /> : <Login />
 
         return (
             <div>
@@ -68,6 +68,8 @@ const Dashboard = React.createClass({
             (err, response) => {
                 if(!err) {
                     this.setState({collections: response})
+                } else {
+                    this.props.updateAuth(false);
                 }
             }
         )

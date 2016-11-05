@@ -3,14 +3,9 @@ import webService from './webservice';
 module.exports = {
     login(email, pass, cb) {
         cb = arguments[arguments.length - 1]
-        if (localStorage.token) {
-            if (cb) cb(true)
-            this.onChange(true)
-            return
-        }
 
         let handleResponse = (err, response) => {
-            if(err || !response.token) {
+            if(err || !response.token || !response.user) {
                 if (cb) cb(false)
                 this.onChange(false)
             } else {
