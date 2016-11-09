@@ -140,7 +140,7 @@ function requireAuth(nextState, replace) {
 }
 
 ReactDOM.render(
-    <Router history={ hashHistory }>
+    <Router history={ browserHistory }>
         <Route path="/" component={App}></Route>
         <Route path="/project/:project" component={AppWrapper} onEnter={requireAuth} />
         <Route path="*" component={App} />
