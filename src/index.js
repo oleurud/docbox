@@ -76,13 +76,16 @@ const Dashboard = React.createClass({
     render() {
         const collections = this.state.collections.map( (collection) => {
             const link = "/project/" + collection.name;
-            return <Link to={link} key={collection.name}>{collection.name}</Link>
+            return <li><Link to={link} key={collection.name}>{collection.name}</Link><hr /></li>
         });
 
         return (
             <div>
-                <h1>Collections</h1>
-                {collections}
+                <h1>Projects</h1>
+                <br />
+                <ul>
+                    {collections}
+                </ul>
             </div>
         )
     }
